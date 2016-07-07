@@ -25,7 +25,7 @@ public class DoubleCheckedLockingTest {
 
     @Test
     public void testGetInstanceConcurrently() throws Exception {
-        Map<String, DoubleCheckedLocking> results = new HashMap<>(20);
+        Map<String, DoubleCheckedLocking> results = new HashMap<>(50);
         ConcurrentTestHelper.AbstractTask task = new ConcurrentTestHelper.AbstractTask() {
             @Override
             void doTask() {
@@ -34,7 +34,7 @@ public class DoubleCheckedLockingTest {
                 results.put(Thread.currentThread().getName(), inst);
             }
         };
-        ConcurrentTestHelper.runTaskConcurrently(task, 100);
+        ConcurrentTestHelper.runTaskConcurrently(task, 50);
         ConcurrentTestHelper.assertAllValuesSame(results);
     }
 }
