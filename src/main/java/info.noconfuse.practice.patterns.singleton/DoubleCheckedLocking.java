@@ -39,18 +39,18 @@ package info.noconfuse.practice.patterns.singleton;
  * <p></p>
  * Created by zzp on 7/6/16.
  */
-public class DoubleCheckSingleton {
+public class DoubleCheckedLocking {
 
-    private static volatile DoubleCheckSingleton inst;
+    private static volatile DoubleCheckedLocking inst;
 
-    private DoubleCheckSingleton() {
+    private DoubleCheckedLocking() {
     }
 
-    public static DoubleCheckSingleton getInstance() {
+    public static DoubleCheckedLocking getInstance() {
         if (inst == null) { // 1.第一次检查
-            synchronized (DoubleCheckSingleton.class) { // 2. 加锁
+            synchronized (DoubleCheckedLocking.class) { // 2. 加锁
                 if (inst == null) { // 3.第二次检查
-                    inst = new DoubleCheckSingleton(); // 4.创建实例
+                    inst = new DoubleCheckedLocking(); // 4.创建实例
                 }
             }
         }
