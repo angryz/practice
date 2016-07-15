@@ -1,15 +1,21 @@
-group 'info.noconfuse'
-version '1.0-SNAPSHOT'
-
-apply plugin: 'java'
-apply plugin: 'idea'
-
-sourceCompatibility = 1.7
-
-repositories {
-    mavenCentral()
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'idea'
 }
 
-dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.11'
+subprojects {
+    group 'info.noconfuse'
+    version '1.0-SNAPSHOT'
+
+    sourceCompatibility = 1.7
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven { url "http://maven.oschina.net/content/groups/public/" }
+    }
+
+    dependencies {
+        testCompile group: 'junit', name: 'junit', version: '4.11'
+    }
 }

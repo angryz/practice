@@ -1,2 +1,1 @@
-rootProject.name = 'practice'
-
+include 'design_pattern', 'spring_boot'
