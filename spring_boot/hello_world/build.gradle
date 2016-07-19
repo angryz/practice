@@ -12,7 +12,7 @@ buildscript {
 apply plugin: 'spring-boot'
 
 jar {
-    baseName = 'springboot-practice'
+    baseName = 'springboot-helloworld'
     version = '0.1'
 }
 
