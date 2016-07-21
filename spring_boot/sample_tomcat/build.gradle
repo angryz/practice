@@ -36,6 +36,7 @@ repositories {
 dependencies {
     compile('org.springframework.boot:spring-boot-starter')
     compile('org.springframework.boot:spring-boot-starter-tomcat')
+    compile('org.springframework:spring-webmvc')
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
