@@ -17,7 +17,7 @@ buildscript {
 apply plugin: 'spring-boot'
 
 jar {
-    baseName = 'springboot-sample-simple'
+    baseName = 'springboot-sample-tomcat'
     version = '0.1'
 }
 
