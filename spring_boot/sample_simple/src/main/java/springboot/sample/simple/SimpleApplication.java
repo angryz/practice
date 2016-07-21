@@ -19,6 +19,9 @@ public class SimpleApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         System.out.println(helloService.getHelloMessage());
+        if (args.length > 0 && args[0].equals("exitcode")) {
+            throw new ExitException();
+        }
     }
 
     public static void main(String[] args) {

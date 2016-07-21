@@ -36,7 +36,7 @@ public class SimpleApplicationTest {
     public void testDefaultSettings() throws Exception {
         SimpleApplication.main(new String[0]);
         String output = outputCapture.toString();
-        assertTrue("Wrong output: " + output, output.contains("Hello Bruce"));
+        assertTrue("Wrong output: " + output, output.contains("Hello Bill"));
     }
 
     @Test
