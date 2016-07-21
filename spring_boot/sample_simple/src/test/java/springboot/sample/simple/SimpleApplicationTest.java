@@ -45,4 +45,11 @@ public class SimpleApplicationTest {
         String output = outputCapture.toString();
         assertTrue("Wrong output: " + output, output.contains("Hello Jim"));
     }
+
+    @Test(expected = IllegalStateException.class)
+    public void testExitException() throws Exception {
+        SimpleApplication.main(new String[]{"exitcode"});
+        String output = outputCapture.toString();
+        assertTrue("Wrong output: " + output, output.contains("ExitException"));
+    }
 }
