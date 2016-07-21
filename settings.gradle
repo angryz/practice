@@ -1,2 +1,2 @@
 include 'design_pattern'
-include 'spring_boot:hello_world', 'spring_boot:sample_simple'
+include 'spring_boot:hello_world', 'spring_boot:sample_simple', 'spring_boot:sample_tomcat'
