@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.boot.test.TestRestTemplate;
 import org.springframework.boot.test.WebIntegrationTest;
+import org.springframework.http.*;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.StreamUtils;
+import org.springframework.web.client.RestTemplate;
 
 import java.io.ByteArrayInputStream;
 import java.nio.charset.Charset;
@@ -32,7 +34,7 @@ public class TomcatApplicationTest {
     public void testHome() throws Exception {
         ResponseEntity<String> entity = new TestRestTemplate().getForEntity("http://localhost:" + port, String.class);
         assertEquals(HttpStatus.OK, entity.getStatusCode());
-        assertEquals("Hello World", eneity.getBody());
+        assertEquals("Hello World", entity.getBody());
     }
 
     @Test
@@ -41,7 +43,7 @@ public class TomcatApplicationTest {
         requestHeaders.set("Accept-Encoding", "gzip");
         HttpEntity<?> requestEntity = new HttpEntity<Object>(requestHeaders);
         RestTemplate restTemplate = new TestRestTemplate();
-        ResponseEntity<byte[]> entity = requestEntity.exchange("http://localhost:"+port, HttpMethod.GET, requestEntity,
+        ResponseEntity<byte[]> entity = restTemplate.exchange("http://localhost:"+port, HttpMethod.GET, requestEntity,
                 byte[].class);
         assertEquals(HttpStatus.OK, entity.getStatusCode());
         GZIPInputStream inflater = new GZIPInputStream(new ByteArrayInputStream(entity.getBody()));
