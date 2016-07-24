@@ -7,6 +7,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
+ * The Scheduled annotation defines when a particular method runs. <br>
+ * NOTE: This example uses fixedRate, which specifies the interval between method invocations measured
+ * from the start time of each invocation. <br>
+ * There are other options, like fixedDelay, which specifies the interval between invocations measured
+ * from the completion of the task. <br>
+ * You can also use @Scheduled(cron=". . .") expressions for more sophisticated task scheduling.
+ * <p>
  * Created by zzp on 7/24/16.
  */
 @Component
