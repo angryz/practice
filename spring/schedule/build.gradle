@@ -1,0 +1,29 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+        classpath('org.springframework.boot:spring-boot-gradle-plugin:1.3.6.RELEASE')
+    }
+}
+
+apply plugin: 'spring-boot'
+
+jar {
+    baseName = 'gs-caching'
+    version = '0.1.0'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter')
+    testCompile('junit:junit')
+}
