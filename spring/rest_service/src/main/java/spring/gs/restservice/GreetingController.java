@@ -7,6 +7,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
+ * This code uses Spring 4’s new @RestController annotation, which marks the class as a controller
+ * where every method returns a domain object instead of a view.
+ * It’s shorthand for @Controller and @ResponseBody rolled together.
+ * <p>
  * Created by zzp on 7/25/16.
  */
 @RestController
