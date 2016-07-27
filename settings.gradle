@@ -1,3 +1,3 @@
 include 'design_pattern'
-include 'spring:caching', 'spring:schedule', 'spring:rest_service', 'spring:rest_consumer', 'spring:actuator_service'
+include 'spring:caching', 'spring:schedule', 'spring:rest_service', 'spring:rest_consumer', 'spring:actuator_service', 'spring:securing_web'
 include 'spring_boot:hello_world', 'spring_boot:sample_simple', 'spring_boot:sample_tomcat'
