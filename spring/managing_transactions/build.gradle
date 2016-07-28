@@ -30,5 +30,5 @@ dependencies {
     compile('org.springframework:spring-tx')
     compile('org.springframework:spring-jdbc')
     compile('com.h2database:h2')
-    testCompile('junit:junit')
+    compile('junit:junit')
 }
