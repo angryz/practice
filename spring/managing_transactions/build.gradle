@@ -9,6 +9,9 @@ buildscript {
     }
 }
 
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'idea'
 apply plugin: 'spring-boot'
 
 jar {
@@ -18,7 +21,6 @@ jar {
 
 repositories {
     mavenLocal()
-    maven { url "http://maven.oschina.net/content/groups/public/" }
     mavenCentral()
 }
 
