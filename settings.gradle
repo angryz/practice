@@ -3,3 +3,4 @@ include 'spring:caching', 'spring:schedule', 'spring:rest_service', 'spring:rest
 include 'spring:actuator_service', 'spring:securing_web', 'spring:managing_transactions'
 //include 'spring:async_method'
 include 'spring_boot:hello_world', 'spring_boot:sample_simple', 'spring_boot:sample_tomcat'
+include 'websocket'
