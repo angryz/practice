@@ -64,7 +64,7 @@ public class WebSocketClient {
                             uri,
                             WebSocketVersion.V13,
                             null,
-                            false,
+                            true,
                             new DefaultHttpHeaders()
                     )
             );
