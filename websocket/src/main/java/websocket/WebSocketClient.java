@@ -16,7 +16,6 @@ import io.netty.handler.codec.http.websocketx.CloseWebSocketFrame;
 import io.netty.handler.codec.http.websocketx.PingWebSocketFrame;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import io.netty.handler.codec.http.websocketx.WebSocketClientHandshakerFactory;
-import io.netty.handler.codec.http.websocketx.WebSocketClientProtocolHandler;
 import io.netty.handler.codec.http.websocketx.WebSocketFrame;
 import io.netty.handler.codec.http.websocketx.WebSocketVersion;
 import io.netty.handler.codec.http.websocketx.extensions.compression.WebSocketClientCompressionHandler;
@@ -32,6 +31,7 @@ import java.net.URISyntaxException;
  */
 public class WebSocketClient {
 
+    //static final String WS_URL = "ws://echo.websocket.org";
     static final String WS_URL = "ws://127.0.0.1:8000/websocket";
 
     public static void main(String[] args) throws URISyntaxException, InterruptedException, IOException {
@@ -41,9 +41,9 @@ public class WebSocketClient {
         final int port;
         if (uri.getPort() == -1) {
             if ("ws".equalsIgnoreCase(scheme)) {
-                port = 8000;
+                port = 80;
             } else if ("wss".equalsIgnoreCase(scheme)) {
-                port = 8443;
+                port = 443;
             } else {
                 port = -1;
             }
@@ -59,7 +59,7 @@ public class WebSocketClient {
 
         EventLoopGroup group = new NioEventLoopGroup();
         try {
-            final WebSocketClientProtocolHandler handler = new WebSocketClientProtocolHandler(
+            final WebSocketClientHandler handler = new WebSocketClientHandler(
                     WebSocketClientHandshakerFactory.newHandshaker(
                             uri,
                             WebSocketVersion.V13,
@@ -84,7 +84,7 @@ public class WebSocketClient {
                         }
                     });
             Channel ch = b.connect(host, port).sync().channel();
-            handler.handshaker().handshake(ch).sync();
+            handler.handshakeFuture().sync();
 
             BufferedReader console = new BufferedReader(new InputStreamReader(System.in));
             while (true) {
