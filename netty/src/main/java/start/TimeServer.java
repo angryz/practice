@@ -68,8 +68,11 @@ public class TimeServer {
 
     public static class TimeServerHandler extends ChannelInboundHandlerAdapter {
 
+        private static final Logger logger = LoggerFactory.getLogger(TimeServerHandler.class);
+
         @Override
         public void channelActive(ChannelHandlerContext ctx) throws Exception {
+            logger.info("Receive a connection [{}].", ctx);
             final ByteBuf time = ctx.alloc().buffer(4);
             time.writeInt((int) (System.currentTimeMillis() / 1000L + 2208988800L));
 
