@@ -11,8 +11,10 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.codec.ByteToMessageDecoder;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author Zheng Zhipeng
@@ -34,7 +36,9 @@ public class TimeClient {
                     .handler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
-                            ch.pipeline().addLast(new TimeClientHandler());
+                            ch.pipeline()
+                                    .addLast(new TimeDecoder())
+                                    .addLast(new TimeClientHandler());
                         }
                     });
 
@@ -63,6 +67,19 @@ public class TimeClient {
         public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
             cause.printStackTrace();
             ctx.close();
+        }
+    }
+
+    public static class TimeDecoder extends ByteToMessageDecoder {
+
+        @Override
+        protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
+            if (in.readableBytes() < 4) {
+                System.out.println("TimeDecoder doesn't collect enough bytes.");
+                return;
+            }
+            out.add(in.readBytes(4));
+            System.out.println("TimeDecoder collected 4 bytes.");
         }
     }
 }
